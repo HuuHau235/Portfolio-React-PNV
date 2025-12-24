@@ -1,5 +1,5 @@
 import TypingText from "./TypingText";
-import avatar from "../../assets/images/avatar.jpg";
+import avatar from "../../assets/images/Huỳnh Hữu Hậu - Heart string.jpg";
 import { useReveal } from "../../hooks/useReveal";
 
 export default function Hero() {
