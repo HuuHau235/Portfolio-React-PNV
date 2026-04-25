@@ -3,8 +3,8 @@ import { useKonami } from "../../hooks/useKonami";
 export default function Toast() {
   useKonami(() => {
     document.body.style.filter = "hue-rotate(180deg)";
-    alert("🎮 Konami Mode Activated!");
+    window.alert("Portfolio accent mode activated.");
   });
 
-  return <div id="toast"></div>;
+  return <div id="toast" aria-hidden="true" />;
 }

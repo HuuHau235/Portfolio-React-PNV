@@ -2,19 +2,29 @@ import { useEffect } from "react";
 
 export function useKonami(cb: () => void) {
   useEffect(() => {
-    let keys: string[] = [];
+    const keys: string[] = [];
     const code = [
-      "ArrowUp","ArrowUp","ArrowDown","ArrowDown",
-      "ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","b","a"
+      "ArrowUp",
+      "ArrowUp",
+      "ArrowDown",
+      "ArrowDown",
+      "ArrowLeft",
+      "ArrowRight",
+      "ArrowLeft",
+      "ArrowRight",
+      "b",
+      "a",
     ];
 
-    const handler = (e: KeyboardEvent) => {
-      keys.push(e.key);
+    const handler = (event: KeyboardEvent) => {
+      keys.push(event.key);
       keys.splice(-code.length - 1, keys.length - code.length);
-      if (code.every((v, i) => v === keys[i])) cb();
+      if (code.every((value, index) => value === keys[index])) {
+        cb();
+      }
     };
 
     window.addEventListener("keydown", handler);
     return () => window.removeEventListener("keydown", handler);
-  }, []);
+  }, [cb]);
 }

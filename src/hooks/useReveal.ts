@@ -2,14 +2,20 @@ import { useEffect } from "react";
 
 export function useReveal() {
   useEffect(() => {
-    const els = document.querySelectorAll("section, .skill-card, .project-card");
-
+    const elements = document.querySelectorAll("section, .reveal-card");
     const observer = new IntersectionObserver(
-      entries =>
-        entries.forEach(e => e.isIntersecting && e.target.classList.add("show")),
-      { threshold: 0.2 }
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("show");
+          }
+        });
+      },
+      { threshold: 0.18 }
     );
 
-    els.forEach(el => observer.observe(el));
+    elements.forEach((element) => observer.observe(element));
+
+    return () => observer.disconnect();
   }, []);
 }

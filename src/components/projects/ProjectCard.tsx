@@ -1,19 +1,78 @@
-export default function ProjectCard({ title, desc, tech, tasks }: any) {
+type ProjectCardProps = {
+  index: string;
+  title: string;
+  badge: string;
+  stack: string[];
+  summary: string;
+  responsibilities: string[];
+  features: string[];
+  contributions: string;
+  learned: string[];
+};
+
+export default function ProjectCard({
+  index,
+  title,
+  badge,
+  stack,
+  summary,
+  responsibilities,
+  features,
+  contributions,
+  learned,
+}: ProjectCardProps) {
   return (
-    <div className="project-card">
-      <h4>{title}</h4>
-      <p className="project-desc">{desc}</p>
+    <article className="project-card reveal-card">
+      <div className="project-topline">
+        <span className="project-index">{index}</span>
+        <span className="project-badge">{badge}</span>
+      </div>
+
+      <h3>{title}</h3>
+      <p className="project-desc">{summary}</p>
+
+      <div className="chip-row">
+        {stack.map((item) => (
+          <span key={item} className="chip">
+            {item}
+          </span>
+        ))}
+      </div>
 
       <div className="project-details">
-        <div>
-          <h5>Technologies</h5>
-          <ul>{tech.map((t: string) => <li key={t}>{t}</li>)}</ul>
+        <div className="project-column">
+          <h4>Responsibilities</h4>
+          <ul className="bullet-list">
+            {responsibilities.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </div>
-        <div>
-          <h5>Responsibilities</h5>
-          <ul>{tasks.map((t: string) => <li key={t}>{t}</li>)}</ul>
+
+        <div className="project-column">
+          <h4>Key Features</h4>
+          <ul className="bullet-list">
+            {features.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
         </div>
       </div>
-    </div>
+
+      <div className="project-footer-grid">
+        <div className="project-note">
+          <h4>Contributions</h4>
+          <p>{contributions}</p>
+        </div>
+        <div className="project-note">
+          <h4>What I Learned</h4>
+          <ul className="bullet-list">
+            {learned.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </article>
   );
 }

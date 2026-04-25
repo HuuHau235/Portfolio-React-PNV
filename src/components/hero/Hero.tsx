@@ -1,29 +1,57 @@
 import TypingText from "./TypingText";
-import avatar from "../../assets/images/Huỳnh Hữu Hậu - Heart string.jpg";
+import avatar from "../../assets/images/avatar.jpg";
 import { useReveal } from "../../hooks/useReveal";
+import { personal, stats } from "../../data/portfolio";
 
 export default function Hero() {
   useReveal();
 
   return (
-    <header className="hero">
+    <header id="cover" className="hero">
       <div className="container hero-grid">
         <div className="hero-content">
-          <p className="hero-tag">Full-Stack Developer</p>
-          <h1>
-            Hi, I'm <span>Huu Hau</span>
-          </h1>
+          <span className="section-kicker">Page 1</span>
+          <p className="hero-tag">{personal.role}</p>
+          <h1>{personal.name}</h1>
           <TypingText />
-          <p className="hero-desc">
-            I build clean, scalable web applications with modern frontend
-            and well-structured backend systems.
-          </p>
-          <a href="#contact" className="btn-primary">Contact Me</a>
+          <p className="hero-desc">{personal.tagline}</p>
+          <p className="hero-intro">{personal.intro}</p>
+
+          <div className="hero-actions">
+            <a href="#projects" className="btn-primary">
+              View Projects
+            </a>
+            <a href="#contact" className="btn-secondary">
+              Contact
+            </a>
+          </div>
+
+          <div className="hero-meta">
+            <span>{personal.location}</span>
+            <span>{personal.email}</span>
+            <span>{personal.phone}</span>
+          </div>
         </div>
 
         <div className="hero-avatar">
-          <img src={avatar} alt="Huu Hau" />
+          <div className="hero-photo-card reveal-card">
+            <img src={avatar} alt={personal.name} />
+            <div className="hero-links">
+              <span>{personal.github}</span>
+              <span>{personal.linkedin}</span>
+              <span>{personal.portfolio}</span>
+            </div>
+          </div>
         </div>
+      </div>
+
+      <div className="container stats-grid">
+        {stats.map((item) => (
+          <div key={item.label} className="stat-card reveal-card">
+            <strong>{item.value}</strong>
+            <span>{item.label}</span>
+          </div>
+        ))}
       </div>
     </header>
   );

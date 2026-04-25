@@ -1,12 +1,19 @@
-export default function SkillCard({ title, items }: any) {
+type SkillCardProps = {
+  title: string;
+  caption: string;
+  items: string[];
+};
+
+export default function SkillCard({ title, caption, items }: SkillCardProps) {
   return (
-    <div className="skill-card">
-      <h4>{title}</h4>
-      <ul>
-        {items.map((s: any) => (
-          <li key={s.name}>{s.name} {s.level}%</li>
+    <article className="skill-card reveal-card">
+      <h3>{title}</h3>
+      <p>{caption}</p>
+      <ul className="bullet-list">
+        {items.map((item) => (
+          <li key={item}>{item}</li>
         ))}
       </ul>
-    </div>
+    </article>
   );
 }

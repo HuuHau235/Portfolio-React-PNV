@@ -2,25 +2,32 @@ import { useEffect, useState } from "react";
 
 export function useTyping(words: string[]) {
   const [text, setText] = useState("");
-  const [word, setWord] = useState(0);
-  const [char, setChar] = useState(0);
-  const [del, setDel] = useState(false);
+  const [wordIndex, setWordIndex] = useState(0);
+  const [charIndex, setCharIndex] = useState(0);
+  const [deleting, setDeleting] = useState(false);
 
   useEffect(() => {
-    const current = words[word];
-    const timer = setTimeout(() => {
-      setText(del ? current.slice(0, char - 1) : current.slice(0, char + 1));
-      setChar(del ? char - 1 : char + 1);
+    const currentWord = words[wordIndex];
+    const interval = window.setTimeout(() => {
+      const nextText = deleting
+        ? currentWord.slice(0, charIndex - 1)
+        : currentWord.slice(0, charIndex + 1);
 
-      if (!del && char === current.length) setTimeout(() => setDel(true), 1000);
-      if (del && char === 0) {
-        setDel(false);
-        setWord((word + 1) % words.length);
+      setText(nextText);
+      setCharIndex((value) => (deleting ? value - 1 : value + 1));
+
+      if (!deleting && charIndex === currentWord.length) {
+        window.setTimeout(() => setDeleting(true), 1000);
       }
-    }, del ? 50 : 100);
 
-    return () => clearTimeout(timer);
-  }, [char, del, word]);
+      if (deleting && charIndex === 0) {
+        setDeleting(false);
+        setWordIndex((value) => (value + 1) % words.length);
+      }
+    }, deleting ? 55 : 95);
+
+    return () => window.clearTimeout(interval);
+  }, [charIndex, deleting, wordIndex, words]);
 
   return text;
 }

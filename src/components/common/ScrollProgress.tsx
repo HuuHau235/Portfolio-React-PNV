@@ -6,19 +6,15 @@ export default function ScrollProgress() {
   useEffect(() => {
     const onScroll = () => {
       const scrollTop = window.scrollY;
-      const height =
-        document.documentElement.scrollHeight - window.innerHeight;
-      setWidth((scrollTop / height) * 100);
+      const height = document.documentElement.scrollHeight - window.innerHeight;
+      const progress = height > 0 ? (scrollTop / height) * 100 : 0;
+      setWidth(progress);
     };
 
+    onScroll();
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return (
-    <div
-      className="scroll-progress"
-      style={{ width: `${width}%` }}
-    />
-  );
+  return <div className="scroll-progress" style={{ width: `${width}%` }} />;
 }

@@ -1,23 +1,35 @@
 import { useReveal } from "../../hooks/useReveal";
+import { aboutParagraphs, careerObjective } from "../../data/portfolio";
 
 export default function About() {
   useReveal();
 
   return (
-    <section className="about">
+    <section id="about" className="page-section about">
       <div className="container">
-        <h3>About Me</h3>
+        <div className="section-heading">
+          <span className="section-kicker">Page 2</span>
+          <h2>About Me</h2>
+        </div>
 
-        <p>
-          I am a Full-Stack Developer specializing in <strong>React</strong> and{" "}
-          <strong>Laravel</strong>, with experience building real-world systems
-          such as e-commerce, order management, wishlists and reviews.
-        </p>
+        <div className="about-grid">
+          <div className="panel-card">
+            {aboutParagraphs.map((paragraph) => (
+              <p key={paragraph}>{paragraph}</p>
+            ))}
+          </div>
 
-        <p>
-          I focus on clean architecture, RESTful APIs and maintainable code.
-          I also explore AI projects using TensorFlow.js.
-        </p>
+          <div className="panel-card objective-card">
+            <h3>Career Objective</h3>
+            <p>{careerObjective.headline}</p>
+            <ul className="bullet-list">
+              {careerObjective.items.map((item) => (
+                <li key={item}>{item}</li>
+              ))}
+            </ul>
+            <p>{careerObjective.closing}</p>
+          </div>
+        </div>
       </div>
     </section>
   );

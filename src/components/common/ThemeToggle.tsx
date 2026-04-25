@@ -14,13 +14,13 @@ export default function ThemeToggle() {
   const toggle = () => {
     document.body.classList.toggle("dark");
     const isDark = document.body.classList.contains("dark");
-    localStorage.setItem("theme", isDark ? "dark" : "");
+    localStorage.setItem("theme", isDark ? "dark" : "light");
     setDark(isDark);
   };
 
   return (
-    <button className="theme-toggle" onClick={toggle}>
-      {dark ? "☀️" : "🌙"}
+    <button className="theme-toggle" onClick={toggle} aria-label="Toggle theme">
+      {dark ? "Light" : "Dark"}
     </button>
   );
 }
