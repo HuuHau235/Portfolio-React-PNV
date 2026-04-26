@@ -1,4 +1,5 @@
-import { achievements, community } from "../../data/portfolio";
+import ImpactCounter from "../common/ImpactCounter";
+import { achievements, community, quickFacts } from "../../data/portfolio";
 import { useReveal } from "../../hooks/useReveal";
 
 export default function Achievements() {
@@ -14,6 +15,12 @@ export default function Achievements() {
             A snapshot of delivery experience, collaboration habits and the kind
             of environments I want to contribute to next.
           </p>
+        </div>
+
+        <div className="impact-grid">
+          {quickFacts.map((item) => (
+            <ImpactCounter key={item.label} {...item} />
+          ))}
         </div>
 
         <div className="achievement-grid">

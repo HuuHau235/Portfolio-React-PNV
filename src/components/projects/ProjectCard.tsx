@@ -8,6 +8,7 @@ type ProjectCardProps = {
   features: string[];
   contributions: string;
   learned: string[];
+  onSpotlight?: () => void;
 };
 
 export default function ProjectCard({
@@ -20,6 +21,7 @@ export default function ProjectCard({
   features,
   contributions,
   learned,
+  onSpotlight,
 }: ProjectCardProps) {
   return (
     <article className="project-card reveal-card">
@@ -72,6 +74,12 @@ export default function ProjectCard({
             ))}
           </ul>
         </div>
+      </div>
+
+      <div className="project-actions">
+        <button type="button" className="btn-secondary" onClick={onSpotlight}>
+          Open Spotlight
+        </button>
       </div>
     </article>
   );

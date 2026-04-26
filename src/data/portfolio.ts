@@ -40,6 +40,28 @@ export const stats = [
   { value: "2025", label: "Internship milestone" },
 ];
 
+export const serviceHighlights = [
+  {
+    title: "Frontend Craft",
+    desc: "Building polished responsive interfaces with strong structure, usability and visual consistency.",
+  },
+  {
+    title: "Backend Thinking",
+    desc: "Designing APIs, data flow and maintainable application logic for real product scenarios.",
+  },
+  {
+    title: "Product Mindset",
+    desc: "Balancing feature delivery, user flow, deployment and team collaboration in practical projects.",
+  },
+];
+
+export const quickFacts = [
+  { value: 6, suffix: "+", label: "Production-style modules" },
+  { value: 4, suffix: "+", label: "Main stacks practiced" },
+  { value: 2, suffix: "", label: "Featured portfolio projects" },
+  { value: 1, suffix: "", label: "Internship experience" },
+];
+
 export const skills = [
   {
     title: "Programming Languages",
@@ -252,4 +274,10 @@ export const navigation = [
   { id: "journey", label: "Journey" },
   { id: "achievements", label: "Impact" },
   { id: "contact", label: "Contact" },
+];
+
+export const quickActions = [
+  { label: "Top", target: "#cover" },
+  { label: "Projects", target: "#projects" },
+  { label: "Contact", target: "#contact" },
 ];

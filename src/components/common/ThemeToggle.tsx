@@ -9,13 +9,20 @@ export default function ThemeToggle() {
       document.body.classList.add("dark");
       setDark(true);
     }
+
+    const onToggle = () => {
+      document.body.classList.toggle("dark");
+      const isDark = document.body.classList.contains("dark");
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      setDark(isDark);
+    };
+
+    window.addEventListener("portfolio:toggle-theme", onToggle);
+    return () => window.removeEventListener("portfolio:toggle-theme", onToggle);
   }, []);
 
   const toggle = () => {
-    document.body.classList.toggle("dark");
-    const isDark = document.body.classList.contains("dark");
-    localStorage.setItem("theme", isDark ? "dark" : "light");
-    setDark(isDark);
+    window.dispatchEvent(new Event("portfolio:toggle-theme"));
   };
 
   return (
